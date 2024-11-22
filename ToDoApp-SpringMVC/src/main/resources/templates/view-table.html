@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        td a.edit {
+            color: #FFA500; /* Orange for edit button */
+        }
+
+        td a.delete {
+            color: #FF0000; /* Red for delete button */
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+
+            th, td {
+                padding: 10px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Task</th>
+            <th colspan="2">Action</th>
+        </tr>
+        <tr th:each="task : ${allTasks}">
+            <td th:text="${task.id}"></td>
+            <td th:text="${task.task}"></td>
+            <td><a class="edit" th:href="@{'/edit/' + ${task.id}}">Edit</a></td>
+            <td><a class="delete" th:href="@{'/delete/' + ${task.id}}">Delete</a></td>
+        </tr>
+    </table>
+</body>
+
+</html>
