@@ -26,6 +26,12 @@ public class ToDoController
 		return "index";
 	}
 	
+	@GetMapping()
+	public String getHello()
+	{
+		return "HII ";
+	}
+
 	@GetMapping("/newTask")
 	public String goToAddTask(Model model) 
 	{
